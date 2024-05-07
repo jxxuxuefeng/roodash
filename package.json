@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup --config rollup.config.ts --configPlugin typescript",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +20,10 @@
     "utils"
   ],
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
     "prettier": "^3.2.5",
     "rollup": "^4.17.2",
+    "tslib": "^2.6.2",
     "typescript": "^5.4.5"
   },
   "author": "snowden.xu",
