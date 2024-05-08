@@ -11,7 +11,10 @@
   "scripts": {
     "build": "rollup --config",
     "test": "jest",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "repository": {
     "url": "https://github.com/jxxuxuefeng/roodash"
@@ -30,17 +33,16 @@
     "rollup": "^4.17.2",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-dts": "^6.1.0",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
     "typescript": "^5.4.5",
-    "ts-jest": "^29.1.2"
+    "vitepress": "^1.1.4"
   },
   "author": "snowden.xu",
   "private": false,
   "license": "MIT",
   "engines": {
-    "node": ">=14.18.0"
-  },
-  "dependencies": {
+    "node": ">=18.18.0"
   }
 }
