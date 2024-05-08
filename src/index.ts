@@ -1,2 +1,2 @@
-export { isJson } from "./typed";
-export { local, session } from "./storage";
+export { isJson } from './typed';
+export { local, session } from './storage';

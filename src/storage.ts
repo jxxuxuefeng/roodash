@@ -1,4 +1,4 @@
-import { isJson } from "./index";
+import { isJson } from './typed';
 
 /**
  * 操作localStorage
@@ -21,10 +21,7 @@ export const local = {
    * @param value
    * @returns {void} | {null}
    */
-  set(
-    key: string,
-    value: string | number | boolean | null | Record<string, any>,
-  ): void | null {
+  set(key: string, value: string | number | boolean | null | Record<string, any>): void | null {
     if (!key || value === undefined) return null;
     return localStorage.setItem(key, JSON.stringify(value));
   },
@@ -69,12 +66,9 @@ export const session = {
    * @param value 值
    * @returns {void} | {null}
    */
-  set(
-    key: string,
-    value: string | number | boolean | null | Record<string, any>,
-  ): void | null {
+  set(key: string, value: string | number | boolean | null | Record<string, any>): void | null {
     if (!key || value === undefined) return null;
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       return sessionStorage.setItem(key, value);
     }
     return sessionStorage.setItem(key, JSON.stringify(value));
