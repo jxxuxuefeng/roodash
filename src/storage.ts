@@ -1,4 +1,4 @@
-import { isJson } from './typed';
+import { isValidJson } from './typed';
 
 /**
  * 操作localStorage
@@ -12,7 +12,7 @@ export const local = {
   get(key: string): any {
     if (!key) return null;
     const res = localStorage.getItem(key);
-    return res && isJson(res) ? JSON.parse(res) : res;
+    return res && isValidJson(res) ? JSON.parse(res) : res;
   },
 
   /**
@@ -57,7 +57,7 @@ export const session = {
   get(key: string): any {
     if (!key) return null;
     const res = sessionStorage.getItem(key);
-    return res && isJson(res) ? JSON.parse(res) : res;
+    return res && isValidJson(res) ? JSON.parse(res) : res;
   },
 
   /**

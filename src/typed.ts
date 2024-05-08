@@ -3,7 +3,7 @@
  * @param {string} str - 要检查的字符串
  * @returns {boolean}
  */
-export const isJson = (str: string): boolean => {
+export const isValidJson = (str: string): boolean => {
   // 尝试将字符串解析为JSON对象
   try {
     JSON.parse(str);
