@@ -42,5 +42,6 @@ export default defineConfig({
       copyright: 'Copyright © 2024-present snowden.xu 贡献者',
       message: '基于 MIT 协议发布'
     },
-  }
+  },
+  base: "/roodash/"
 })
