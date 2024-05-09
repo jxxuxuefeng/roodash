@@ -30,6 +30,7 @@ export default defineConfig({
         text: 'typed',
         items: [
           {text: 'isValidJson', link: '/typed/isValidJson'},
+          {text: 'isArray', link: '/typed/isArray'},
         ]
       }
     ],
