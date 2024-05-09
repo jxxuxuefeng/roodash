@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+const pkg = require('../../package.json')
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,6 +9,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '指南', link: '/introduction/' },
+      { text: pkg.version, link: '/changelog/' },
     ],
 
     sidebar: [
@@ -42,6 +44,23 @@ export default defineConfig({
     footer: {
       copyright: 'Copyright © 2024-present snowden.xu 贡献者',
       message: '基于 MIT 协议发布'
+    },
+
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
+    },
+
+    outline: {
+      label: '页面导航'
+    },
+
+    lastUpdated: {
+      text: '最后更新于',
+      formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'medium'
+      }
     },
   },
   base: "/roodash/"
