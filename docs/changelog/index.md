@@ -11,6 +11,22 @@ outline: deep
 - 主版本号：含有破坏性更新和新特性
 
 
+## 1.0.0
+
+`2024-05-09`
+
+- 🔥 1.0.0正式版本发布
+- 🎉 新增 [`isObject`](/typed/isObject)方法
+- 🎉 新增 [`isFunction`](/typed/isFunction)方法
+- 🎉 新增 [`isString`](/typed/isString)方法
+- 🎉 新增 [`isNumber`](/typed/isNumber)方法
+- 🎉 新增 [`isDate`](/typed/isDate)方法
+- 🎉 新增 [`isSymbol`](/typed/isSymbol)方法
+- 🎉 新增 [`isEmpty`](/typed/isEmpty)方法
+- 🎉 新增 [`isEqual`](/typed/isEqual)方法
+- 🎉 新增 [`omit`](/object/omit)方法
+- 🎉 新增 [`pick`](/object/pick)方法
+
 ## 0.2.0
 
 `2024-05-09`

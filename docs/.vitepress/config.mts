@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import {isDate, isString} from "../../src/typed";
 const pkg = require('../../package.json')
 
 // https://vitepress.dev/reference/site-config
@@ -22,17 +23,32 @@ export default defineConfig({
         ]
       },
       {
-        text: 'storage',
+        text: 'Storage',
         items: [
           {text: 'local', link: '/storage/local'},
           {text: 'session', link: '/storage/session'},
         ]
       },
       {
-        text: 'typed',
+        text: 'Object',
+        items: [
+          {text: 'omit', link: '/object/omit'},
+          {text: 'pick', link: '/object/pick'},
+        ]
+      },
+      {
+        text: 'Typed',
         items: [
           {text: 'isValidJson', link: '/typed/isValidJson'},
           {text: 'isArray', link: '/typed/isArray'},
+          {text: 'isObject', link: '/typed/isObject'},
+          {text: 'isFunction', link: '/typed/isFunction'},
+          {text: 'isString', link: '/typed/isString'},
+          {text: 'isNumber', link: '/typed/isNumber'},
+          {text: 'isDate', link: '/typed/isDate'},
+          {text: 'isSymbol', link: '/typed/isSymbol'},
+          {text: 'isEmpty', link: '/typed/isEmpty'},
+          {text: 'isEqual', link: '/typed/isEqual'},
         ]
       }
     ],
