@@ -15,7 +15,7 @@ export default defineConfig({
       { text: '指南', link: '/introduction/' },
       { text: pkg.version, link: '/changelog/' },
     ],
-    logo: 'logo.png',
+    logo: '/logo.png',
     sidebar: [
       {
         text: '起步',
