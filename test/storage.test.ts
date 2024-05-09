@@ -25,7 +25,6 @@ describe('storage', () => {
 
     test('return value from localStorage', () => {
       const key = 'testKey';
-      const value = 1;
       localStorage.setItem(key, '{"name": "John", "age": 30, "city": "New York",}');
       const result = local.get(key);
       expect(result).toBe('{"name": "John", "age": 30, "city": "New York",}');
@@ -102,7 +101,6 @@ describe('storage', () => {
 
     test('return value from sessionStorage', () => {
       const key = 'testKey';
-      const value = 1;
       sessionStorage.setItem(key, '{"name": "John", "age": 30, "city": "New York",}');
       const result = session.get(key);
       expect(result).toBe('{"name": "John", "age": 30, "city": "New York",}');

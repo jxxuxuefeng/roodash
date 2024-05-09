@@ -9,7 +9,7 @@ export const local = {
    * @param key
    * @returns {any}
    */
-  get(key: string): any {
+  get(key: string): unknown {
     if (!key) return null;
     const res = localStorage.getItem(key);
     return res && isValidJson(res) ? JSON.parse(res) : res;
@@ -21,7 +21,7 @@ export const local = {
    * @param value
    * @returns {void} | {null}
    */
-  set(key: string, value: string | number | boolean | null | Record<string, any>): void | null {
+  set(key: string, value: string | number | boolean | null | Record<string, unknown>): void | null {
     if (!key || value === undefined) return null;
     return localStorage.setItem(key, JSON.stringify(value));
   },
@@ -54,7 +54,7 @@ export const session = {
    * @param key
    * @returns {any}
    */
-  get(key: string): any {
+  get(key: string): unknown {
     if (!key) return null;
     const res = sessionStorage.getItem(key);
     return res && isValidJson(res) ? JSON.parse(res) : res;
@@ -66,7 +66,7 @@ export const session = {
    * @param value 值
    * @returns {void} | {null}
    */
-  set(key: string, value: string | number | boolean | null | Record<string, any>): void | null {
+  set(key: string, value: string | number | boolean | null | Record<string, unknown>): void | null {
     if (!key || value === undefined) return null;
     if (typeof value === 'string') {
       return sessionStorage.setItem(key, value);
