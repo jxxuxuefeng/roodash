@@ -1,7 +1,10 @@
 # session
 
+`0.1.0`
+
 封装了sessionStorage的操作函数，提供了get、set、remove、clear等方法。
 
+## 基本用法
 ### get
 ```typescript 
 import { session } from 'roodash';
