@@ -9,44 +9,44 @@
 import { isNumber } from 'roodash';
 
 isNumber('1');
-// false
+// => false
 
 isNumber(NaN);
-// false
+// => false
 
 isNumber(Infinity);
-// false
+// => false
 
 isNumber(-Infinity);
-// false
+// => false
 
 isNumber('1');
-// false
+// => false
 
 isNumber(() => {});
-// false
+// => false
 
 isNumber({});
-// false
+// => false
 
 isNumber([]);
-// false
+// => false
 
 isNumber(null);
-// false
+// => false
 
 isNumber(undefined);
-// false
+// => false
 
 isNumber(true);
-// false
+// => false
 
 isNumber(Symbol('1'));
-// false
+// => false
 
 isNumber(new Date());
-// false
+// => false
 
 isNumber(1);
-// true
+// => true
 ```

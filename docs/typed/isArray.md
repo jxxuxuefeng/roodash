@@ -9,26 +9,26 @@
 import { isArray } from 'roodash';
 
 isArray('hello');
-// false
+// => false
 
 isArray(1);
-// false
+// => false
 
 isArray(true);
-// false
+// => false
 
 isArray(undefined);
-// false
+// => false
 
 isArray(null);
-// false
+// => false
 
 isArray(function(){});
-// false
+// => false
 
 isArray({name: 'roodash'});
-// false
+// => false
 
 isArray([1,2,3]);
-// true
+// => true
 ```

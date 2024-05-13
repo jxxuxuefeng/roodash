@@ -9,29 +9,29 @@
 import { isObject } from 'roodash';
 
 isObject('hello');
-// false
+// => false
 
 isObject(1);
-// false
+// => false
 
 isObject(true);
-// false
+// => false
 
 isObject(undefined);
-// false
+// => false
 
 isObject(null);
-// false
+// => false
 
 isObject(function(){});
-// false
+// => false
 
 isObject([1,2,3]);
-// false
+// => false
 
 isObject(new Date());
-// false
+// => false
 
 isObject({name: 'roodash'});
-// true
+// => true
 ```

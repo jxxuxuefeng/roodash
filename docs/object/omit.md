@@ -16,5 +16,5 @@ const fish = {
 }
 
 omit(fish, ['name', 'source']) 
-// { weight, brackish }
+// => { weight, brackish }
 ```

@@ -9,26 +9,26 @@
 import { isFunction } from 'roodash';
 
 isFunction('hello');
-// false
+// => false
 
 isFunction(1);
-// false
+// => false
 
 isFunction(true);
-// false
+// => false
 
 isFunction(undefined);
-// false
+// => false
 
 isFunction(null);
-// false
+// => false
 
 isFunction([1,2,3]);
-// false
+// => false
 
 isFunction(new Date());
-// false
+// => false
 
 isFunction(function(){});
-// true
+// => true
 ```

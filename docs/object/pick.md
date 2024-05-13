@@ -16,5 +16,5 @@ const fish = {
 }
 
 pick(fish, ['name', 'source'])
-// { name, source }
+// => { name, source }
 ```

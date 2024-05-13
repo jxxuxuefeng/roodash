@@ -10,14 +10,14 @@
 import { isEqual } from 'roodash';
 
 isEqual('hello', 'world')
-// false
+// => false
 
 isEqual(22, 'abc')
-// false
+// => false
 
 isEqual(null, null) 
-// true
+// => true
 
 isEqual([], [])     
-// true
+// => true
 ```

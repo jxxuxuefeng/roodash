@@ -9,29 +9,29 @@
 import { isSymbol } from 'roodash';
 
 isSymbol('foo');
-// false
+// => false
 
 isSymbol(123);
-// false
+// => false
 
 isSymbol({});
-// false
+// => false
 
 isSymbol([]);
-// false
+// => false
 
 isSymbol(null);
-// false
+// => false
 
 isSymbol(undefined);
-// false
+// => false
 
 isSymbol(NaN);
-// false
+// => false
 
 isSymbol(Infinity);
-// false
+// => false
 
 isSymbol(Symbol('foo'));
-// true
+// => true
 ```

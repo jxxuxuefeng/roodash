@@ -9,14 +9,14 @@
 import { isValidJson } from 'roodash';
 
 isValidJson('{"name": "John", "age": 30, "city": "New York",}');
-// false
+// => false
 
 isValidJson('  ');
-// false
+// => false
 
 isValidJson('{"name":"roodash"}');
-// true
+// => true
 
 isValidJson('[1, 2, 3]');
-// true
+// => true
 ```

@@ -9,7 +9,7 @@ import { local } from 'roodash';
 localStorage.setItem('localKey', JSON.stringify({ name: 'roodash' }));
 
 local.get('localKey');
-// { name: 'roodash' }
+// => { name: 'roodash' }
 ```
 
 ### set
@@ -19,7 +19,7 @@ import { local } from 'roodash';
 local.set('localKey', { name: 'roodash' });
 
 localStorage.getItem('localKey');
-// { name: 'roodash' }
+// => { name: 'roodash' }
 ```
 
 ### remove
@@ -31,7 +31,7 @@ localStorage.setItem('localKey', JSON.stringify({ name: 'roodash' }));
 local.remove('localKey');
 
 localStorage.getItem('localKey');
-// null
+// => null
 ```
 
 ### clear
@@ -43,5 +43,5 @@ localStorage.setItem('localKey', JSON.stringify({ name: 'roodash' }));
 local.clear();
 
 localStorage.getItem('localKey');
-// null
+// => null
 ```

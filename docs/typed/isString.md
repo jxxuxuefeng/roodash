@@ -9,32 +9,32 @@
 import { isString } from 'roodash';
 
 isString(123);
-// false
+// => false
 
 isString(null);
-// false
+// => false
 
 isString(undefined);
-// false
+// => false
 
 isString({});
-// false
+// => false
 
 isString([]);
-// false
+// => false
 
 isString(() => {});
-// false
+// => false
 
 isString(true);
-// false
+// => false
 
 isString(Symbol('foo'));
-// false
+// => false
 
 isString(new Date());
-// false
+// => false
 
 isString('hello');
-// true
+// => true
 ```

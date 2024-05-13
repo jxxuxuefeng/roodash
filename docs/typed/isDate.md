@@ -9,35 +9,35 @@
 import { isDate } from 'roodash';
 
 isDate('2019-01-01');
-// false
+// => false
 
 isDate(1546300800000);
-// false
+// => false
 
 isDate({});
-// false
+// => false
 
 isDate([]);
-// false
+// => false
 
 isDate(null);
-// false
+// => false
 
 isDate(undefined);
-// false
+// => false
 
 isDate(NaN);
-// false
+// => false
 
 isDate(Infinity);
-// false
+// => false
 
 isDate(true);
-// false
+// => false
 
 isDate(0);
-// false
+// => false
 
 isDate(new Date());
-// true
+// => true
 ```

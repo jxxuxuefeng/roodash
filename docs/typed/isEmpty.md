@@ -10,68 +10,68 @@ import { isEmpty } from 'roodash';
 
 class Data {}
 isEmpty(new Data())
-// false
+// => false
 
 isEmpty(new Date());
-// false
+// => false
 
 isEmpty('foo');
-// false
+// => false
 
 isEmpty(1);
-// false
+// => false
 
 isEmpty({ foo: 'bar' });
-// false
+// => false
 
 isEmpty([1, 2, 3]);
-// false
+// => false
 
 isEmpty(Symbol('foo'));
-// false
+// => false
 
 isEmpty(new Date());
-// false
+// => false
 
 isEmpty(() => {});
-// false
+// => false
 
 isEmpty(/foo/);
-// false
+// => false
 
 isEmpty(null);
-// true
+// => true
 
 isEmpty(undefined);
-// true
+// => true
 
 isEmpty(0);
-// true
+// => true
 
 isEmpty(true);
-// true
+// => true
 
 isEmpty(false);
-// true
+// => true
 
 isEmpty([]);
-// true
+// => true
 
 isEmpty({});
-// true
+// => true
 
 isEmpty('');
-// true
+// => true
 
 isEmpty(String());
-// true
+// => true
 
 isEmpty(new Date('invalid value'));
-// true
+// => true
 
 isEmpty(NaN);
-// true
+// => true
 
 isEmpty(Infinity);
-// true
+// => true
 ```
