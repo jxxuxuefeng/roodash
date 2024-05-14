@@ -1,11 +1,11 @@
 import { pick } from '../../src';
 
 describe('pick function', () => {
-  test('handles null input', () => {
+  test('传入null，返回空对象', () => {
     const result = pick(null as unknown as Record<string, unknown>, []);
     expect(result).toEqual({});
   });
-  test('handles empty keys', () => {
+  test('传入空，返回空对象', () => {
     const result = pick({ a: 2 }, []);
     expect(result).toEqual({});
   });
@@ -13,19 +13,19 @@ describe('pick function', () => {
     const result = pick({ a: 2, b: 3 }, ['c'] as any);
     expect(result).toEqual({});
   });
-  test('handle one key not in object', () => {
+  test('处理不在对象中的键', () => {
     const result = pick({ a: 2, b: 3 }, ['a', 'c'] as any);
     expect(result).toEqual({ a: 2 });
   });
-  test('does not ignore undefined values', () => {
+  test('不忽略未定义的值', () => {
     const result = pick({ a: 2, b: undefined }, ['b']);
     expect(result).toEqual({ b: undefined });
   });
-  test('returns picked properties only', () => {
+  test('仅返回选取的属性', () => {
     const result = pick({ a: 2, b: 4 }, ['a']);
     expect(result).toEqual({ a: 2 });
   });
-  test('type: accepts an interface', () => {
+  test('type：接受接口', () => {
     interface SomeDeclaredType {
       a: string;
       b: Error;
@@ -39,7 +39,7 @@ describe('pick function', () => {
     const result = pick(x, ['a']);
     expect(result).toEqual({ a: 'alpha' });
   });
-  test('works with proxied objects', () => {
+  test('与代理对象一起使用', () => {
     const target = {
       a: 'hello',
       b: 'everyone',
@@ -53,14 +53,14 @@ describe('pick function', () => {
     const result = pick(proxied, ['a']);
     expect(result).toEqual({ a: 'world' });
   });
-  test('works with objects created without the prototype chain of Object e.g. by `Object.create(null)`', () => {
+  test('适用于在没有对象原型链的情况下创建的对象，例如通过`Object.create(null)`', () => {
     const obj = Object.create(null);
     obj.a = 2;
     obj.b = 4;
     const result = pick(obj, ['a']);
     expect(result).toEqual({ a: 2 });
   });
-  test('works with objects that have `hasOwnProperty` overwritten', () => {
+  test('适用于已覆盖“hasOwnProperty”的对象', () => {
     const obj = { a: 2, b: 4 };
     // @ts-expect-error overwrite hasOwnProperty
     obj.hasOwnProperty = 'OVERWRITTEN';

@@ -1,22 +1,22 @@
 import { isValidJson } from '../../src';
 
 describe('isValidJson', () => {
-  test('return false for invalid json string', () => {
+  test('无效json字符串返回false', () => {
     const result = isValidJson('{"name": "John", "age": 30, "city": "New York",}');
     expect(result).toBe(false);
   });
 
-  test('return false for empty string', () => {
+  test('空字符串返回false', () => {
     const result = isValidJson('  ');
     expect(result).toBe(false);
   });
 
-  test('return true for json string', () => {
+  test('json字符串返回true', () => {
     const result = isValidJson('{"name": "John", "age": 30, "city": "New York"}');
     expect(result).toBe(true);
   });
 
-  test('return true for json array', () => {
+  test('json数组返回true', () => {
     const result = isValidJson('[1, 2, 3]');
     expect(result).toBe(true);
   });

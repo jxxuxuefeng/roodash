@@ -31,7 +31,7 @@ describe('isEqual function', () => {
     [symbolKey]: 'symbol',
   };
   complex.loop = complex;
-  test('returns true for equal things', () => {
+  test('对于相同的事物返回 true', () => {
     expect(isEqual(0, 0)).toBe(true);
     expect(isEqual('a', 'a')).toBe(true);
     const hello = Symbol('hello');
@@ -51,7 +51,7 @@ describe('isEqual function', () => {
       ),
     ).toBe(true);
   });
-  test('returns false for non-equal things', () => {
+  test('对于不相等的事物返回 false', () => {
     expect(isEqual(0, 1)).toBe(false);
     expect(isEqual('a', 'b')).toBe(false);
     expect(isEqual(new RegExp(/^http:/), new RegExp(/https/))).toBe(false);

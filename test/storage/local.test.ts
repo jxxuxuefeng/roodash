@@ -5,13 +5,13 @@ describe('local', () => {
     localStorage.clear();
   });
 
-  test('return null for empty key', () => {
+  test('对于空键返回 null', () => {
     const key = '';
     const result = local.get(key);
     expect(result).toBeNull();
   });
 
-  test('return value from localStorage', () => {
+  test('从本地存储返回值', () => {
     const key = 'testKey';
     const value = { name: 'John', age: 30 };
     localStorage.setItem(key, JSON.stringify(value));
@@ -19,21 +19,21 @@ describe('local', () => {
     expect(result).toEqual(value);
   });
 
-  test('return value from localStorage', () => {
+  test('从本地存储返回值', () => {
     const key = 'testKey';
     localStorage.setItem(key, '{"name": "John", "age": 30, "city": "New York",}');
     const result = local.get(key);
     expect(result).toBe('{"name": "John", "age": 30, "city": "New York",}');
   });
 
-  test('return null for empty key', () => {
+  test('对于空键返回 null', () => {
     const key = '';
     const value = { name: 'John', age: 30 };
     const result = local.set(key, value);
     expect(result).toBeNull();
   });
 
-  test('return value in localStorage', () => {
+  test('返回值保存在localStorage中', () => {
     const key = 'testKey';
     const value = { name: 'John', age: 30 };
     local.set(key, value);
@@ -41,13 +41,13 @@ describe('local', () => {
     expect(result).toBe(JSON.stringify(value));
   });
 
-  test('return null for empty key', () => {
+  test('对于空键返回 null', () => {
     const key = '';
     const result = local.remove(key);
     expect(result).toBeNull();
   });
 
-  test('should remove value from localStorage', () => {
+  test('应该从 localStorage 中删除值', () => {
     const key = 'testKey';
     const value = { name: 'John', age: 30 };
     localStorage.setItem(key, JSON.stringify(value));
@@ -56,7 +56,7 @@ describe('local', () => {
     expect(result).toBeNull();
   });
 
-  test('should clear localStorage', () => {
+  test('应该清除本地存储', () => {
     const key1 = 'testKey1';
     const key2 = 'testKey2';
     const value1 = { name: 'John', age: 30 };

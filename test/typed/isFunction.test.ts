@@ -1,48 +1,48 @@
 import { isFunction } from '../../src';
 
 describe('isFunction function', () => {
-  test('returns false for null', () => {
+  test('对于 null 返回 false', () => {
     const result = isFunction(null);
     expect(result).toBe(false);
   });
-  test('returns false for undefined', () => {
+  test('对于未定义返回 false', () => {
     const result = isFunction(undefined);
     expect(result).toBe(false);
   });
-  test('returns false for boolean', () => {
+  test('布尔值返回 false', () => {
     const result = isFunction(false);
     expect(result).toBe(false);
   });
-  test('returns false for class instance', () => {
+  test('对于类实例返回 false', () => {
     class Data {}
     const result = isFunction(new Data());
     expect(result).toBe(false);
   });
-  test('returns false for number', () => {
+  test('对于数字返回 false', () => {
     const result = isFunction(22);
     expect(result).toBe(false);
   });
-  test('returns false for string', () => {
+  test('对于字符串返回 false', () => {
     const result = isFunction('abc');
     expect(result).toBe(false);
   });
-  test('returns false for array', () => {
+  test('对于数组返回 false', () => {
     const result = isFunction([1, 2, 3]);
     expect(result).toBe(false);
   });
-  test('returns false for object', () => {
+  test('为对象返回 false', () => {
     const result = isFunction({});
     expect(result).toBe(false);
   });
-  test('returns true for function', () => {
+  test('函数返回 true', () => {
     const result = isFunction(function () {});
     expect(result).toBe(true);
   });
-  test('returns true for arrow function', () => {
+  test('对于箭头函数返回true', () => {
     const result = isFunction(() => {});
     expect(result).toBe(true);
   });
-  test('returns true for named function', () => {
+  test('对于命名函数返回true', () => {
     function sayHello() {
       return 'hello';
     }

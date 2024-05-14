@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress';
-import { isDate, isString } from '../../src/typed';
 const pkg = require('../../package.json');
 
 // https://vitepress.dev/reference/site-config
@@ -39,7 +38,11 @@ export default defineConfig({
       },
       {
         text: 'Util',
-        items: [{ text: 'cloneDeep', link: '/util/cloneDeep' }],
+        items: [
+          { text: 'cloneDeep', link: '/util/cloneDeep' },
+          { text: 'debounce', link: '/util/debounce' },
+          { text: 'throttle', link: '/util/throttle' },
+        ],
       },
       {
         text: 'Typed',

@@ -5,7 +5,7 @@ describe('isEmpty function', () => {
   class Person {
     name: string = 'ray';
   }
-  test('returns true for empty values', () => {
+  test('对于空值返回 true', () => {
     expect(isEmpty(new Data())).toBe(true);
     expect(isEmpty(null)).toBe(true);
     expect(isEmpty(undefined)).toBe(true);
@@ -21,7 +21,7 @@ describe('isEmpty function', () => {
     expect(isEmpty(Infinity)).toBe(true);
     expect(isEmpty(new Map())).toBe(true);
   });
-  test('returns false for non-empty values', () => {
+  test('对于非空值返回 false', () => {
     expect(isEmpty(new Date())).toBe(false);
     expect(isEmpty(new Date('2022-09-01T02:19:55.976Z'))).toBe(false);
     expect(isEmpty(22)).toBe(false);

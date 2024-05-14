@@ -1,14 +1,14 @@
 import { cloneDeep } from '../../src';
 
 describe('cloneDeep function', () => {
-  test('return the same value for non-object types', () => {
+  test('非对象类型返回相同的值', () => {
     expect(cloneDeep(42)).toBe(42);
     expect(cloneDeep('hello')).toBe('hello');
     expect(cloneDeep(true)).toBe(true);
     expect(cloneDeep(null)).toBe(null);
     expect(cloneDeep(undefined)).toBe(undefined);
   });
-  test('deeply clone objects', () => {
+  test('深度克隆对象', () => {
     const obj = {
       a: 1,
       b: {
@@ -22,13 +22,13 @@ describe('cloneDeep function', () => {
     expect(obj).not.toBe(clonedObj);
     expect(obj).toEqual(clonedObj);
   });
-  test('deeply clone arrays', () => {
+  test('深度克隆数组', () => {
     const arr = [1, 2, { a: 3 }];
     const clonedArr = cloneDeep(arr);
     expect(arr).not.toBe(clonedArr);
     expect(arr).toEqual(clonedArr);
   });
-  test('handle circular references correctly', () => {
+  test('正确处理循环引用', () => {
     const obj: any = { a: 1 };
     obj.b = obj;
     const clonedObj = cloneDeep(obj);
