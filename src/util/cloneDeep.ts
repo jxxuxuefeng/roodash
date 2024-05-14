@@ -1,4 +1,4 @@
-import { isArray } from './typed';
+import { isArray } from '../typed/isArray';
 
 /**
  * 深拷贝

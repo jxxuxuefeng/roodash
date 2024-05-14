@@ -1,15 +1,15 @@
-export { pick, omit } from './object';
-export { cloneDeep } from './util';
-export {
-  isValidJson,
-  isArray,
-  isObject,
-  isFunction,
-  isString,
-  isNumber,
-  isDate,
-  isSymbol,
-  isEmpty,
-  isEqual,
-} from './typed';
-export { local, session } from './storage';
+export { omit } from './object/omit';
+export { pick } from './object/pick';
+export { cloneDeep } from './util/cloneDeep';
+export { isValidJson } from './typed/isValidJson';
+export { isArray } from './typed/isArray';
+export { isObject } from './typed/isObject';
+export { isFunction } from './typed/isFunction';
+export { isString } from './typed/isString';
+export { isNumber } from './typed/isNumber';
+export { isDate } from './typed/isDate';
+export { isSymbol } from './typed/isSymbol';
+export { isEmpty } from './typed/isEmpty';
+export { isEqual } from './typed/isEqual';
+export { local } from './storage/local';
+export { session } from './storage/session';
