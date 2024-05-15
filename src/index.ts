@@ -4,6 +4,7 @@ export { pick } from './object/pick';
 export { cloneDeep } from './util/cloneDeep';
 export { debounce } from './util/debounce';
 export { throttle } from './util/throttle';
+export { formatData } from './util/formatData';
 
 export { isValidJson } from './typed/isValidJson';
 export { isArray } from './typed/isArray';

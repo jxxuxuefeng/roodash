@@ -42,6 +42,7 @@ export default defineConfig({
           { text: 'cloneDeep', link: '/util/cloneDeep' },
           { text: 'debounce', link: '/util/debounce' },
           { text: 'throttle', link: '/util/throttle' },
+          { text: 'formatData', link: '/util/formatData' },
         ],
       },
       {
