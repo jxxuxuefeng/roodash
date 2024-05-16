@@ -6,6 +6,7 @@ export { debounce } from './util/debounce';
 export { throttle } from './util/throttle';
 export { formatData } from './util/formatData';
 export { getFileExtension } from './util/getFileExtension';
+export { generateUUID } from './util/generateUUID';
 
 export { isValidJson } from './typed/isValidJson';
 export { isArray } from './typed/isArray';
