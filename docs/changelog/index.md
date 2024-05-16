@@ -10,6 +10,14 @@ outline: deep
 - 次版本号：带有新特性的向下兼容的版本
 - 主版本号：含有破坏性更新和新特性
 
+## 1.4.0
+
+`2024-05-16`
+
+- 🎉 新增 [`getFileExtension`](/util/getFileExtension)方法
+- 🆕 新增 [`formatData`](/util/formatData)方法的 `deep` 和 `deepKey` 参数
+- 💄 优化 [`cloneDeep`](/util/cloneDeep) [`throttle`](/util/throttle) [`debounce`](/util/debounce)文档参数说明
+
 ## 1.3.0
 
 `2024-05-15`

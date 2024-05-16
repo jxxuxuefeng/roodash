@@ -21,6 +21,14 @@ interface FormatDataOptions {
    * 额外的数据
    */
   extra?: RecordItem;
+  /**
+   * 是否深度格式化，默认为 false
+   */
+  deep?: boolean;
+  /**
+   * 深度格式化key，默认为 'children'
+   */
+  deepKey?: string;
 }
 
 /**
@@ -55,6 +63,8 @@ const getEffectiveMap = (data: Data, mapping: Map): Map => {
  * @param mapping - 映射关系
  * @param keep - 是否保留原始 key
  * @param extra - 额外的数据
+ * @param deep - 是否深度格式化
+ * @param deepKey - 深度格式化 key 值 默认为 'children'
  * @returns 格式化后的对象
  */
 const formatSingleItem = (
@@ -62,6 +72,8 @@ const formatSingleItem = (
   mapping: Map,
   keep: boolean,
   extra: RecordItem,
+  deep: boolean,
+  deepKey: string,
 ): RecordItem => {
   const formattedItem: RecordItem = isObject(extra) ? { ...extra } : {};
   Object.keys(item).forEach((key) => {
@@ -69,7 +81,13 @@ const formatSingleItem = (
     if (keep && mappedKey !== key) {
       formattedItem[key] = item[key];
     }
-    formattedItem[mappedKey] = item[key];
+    if (deep && key === deepKey && Array.isArray(item[key])) {
+      formattedItem[key] = item[key].map((child: RecordItem) =>
+        formatSingleItem(child, mapping, keep, extra, deep, deepKey),
+      );
+    } else {
+      formattedItem[mappedKey] = item[key];
+    }
   });
   return formattedItem;
 };
@@ -87,13 +105,13 @@ export const formatData = <T extends Data>(data: T, options?: FormatDataOptions)
   }
 
   // 解构参数，设置默认值
-  const { map = {}, keep = false, extra = {} } = options || {};
+  const { map = {}, keep = false, extra = {}, deep = false, deepKey = 'children' } = options || {};
 
   // 获取有效的 mapping
   const effectiveMap = getEffectiveMap(data, map);
 
   // 处理数组或单个对象
   return Array.isArray(data)
-    ? data.map((item) => formatSingleItem(item, effectiveMap, keep, extra))
-    : formatSingleItem(data, effectiveMap, keep, extra);
+    ? data.map((item) => formatSingleItem(item, effectiveMap, keep, extra, deep, deepKey))
+    : formatSingleItem(data, effectiveMap, keep, extra, deep, deepKey);
 };

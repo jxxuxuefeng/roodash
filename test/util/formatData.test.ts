@@ -91,4 +91,102 @@ describe('formatData function', () => {
     const newValue = formatData(value, { extra: 1 as any });
     expect(newValue).toEqual({ name: '张三', age: 18 });
   });
+  it('格式化对象树形结构数据', () => {
+    const value = {
+      name: '张三',
+      age: 18,
+      children: [
+        { name: '李四', age: 20 },
+        { name: '王五', age: 22 },
+      ],
+    };
+    const newValue = formatData(value, {
+      map: { name: 'username', age: 'value' },
+      deep: true,
+      deepKey: 'children',
+    });
+    expect(newValue).toEqual({
+      username: '张三',
+      value: 18,
+      children: [
+        { username: '李四', value: 20 },
+        { username: '王五', value: 22 },
+      ],
+    });
+  });
+  it('格式化对象树形结构数据，不传入 deepKey，默认为 children', () => {
+    const value = {
+      name: '张三',
+      age: 18,
+      children: [
+        { name: '李四', age: 20 },
+        { name: '王五', age: 22 },
+      ],
+    };
+    const newValue = formatData(value, {
+      map: { name: 'username', age: 'value' },
+      deep: true,
+    });
+    expect(newValue).toEqual({
+      username: '张三',
+      value: 18,
+      children: [
+        { username: '李四', value: 20 },
+        { username: '王五', value: 22 },
+      ],
+    });
+  });
+  it('格式化数组树形结构数据', () => {
+    const value = [
+      {
+        name: '张三',
+        age: 18,
+        children: [
+          { name: '李四', age: 20 },
+          { name: '王五', age: 22 },
+        ],
+      },
+    ];
+    const newValue = formatData(value, {
+      map: { name: 'username', age: 'value' },
+      deep: true,
+      deepKey: 'children',
+    });
+    expect(newValue).toEqual([
+      {
+        username: '张三',
+        value: 18,
+        children: [
+          { username: '李四', value: 20 },
+          { username: '王五', value: 22 },
+        ],
+      },
+    ]);
+  });
+  it('格式化数组树形结构数据，不传入 deepKey，默认为 children', () => {
+    const value = [
+      {
+        name: '张三',
+        age: 18,
+        children: [
+          { name: '李四', age: 20, children: [{ name: '赵六', age: 19 }] },
+          { name: '王五', age: 22, children: [{ name: '赵七', age: 19 }] },
+        ],
+      },
+    ];
+    const newValue = formatData(value, {
+      map: { name: 'username', age: 'value' },
+      deep: true,
+    });
+    expect(newValue).toEqual([
+      {
+        username: '张三',
+        value: 18,
+        children: [
+          { username: '李四', value: 20, children: [{ username: '赵六', value: 19 }] },
+          { username: '王五', value: 22, children: [{ username: '赵七', value: 19 }] },
+        ],
+      },
+    ]);
+  });
 });
