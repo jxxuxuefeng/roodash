@@ -189,4 +189,54 @@ describe('formatData function', () => {
       },
     ]);
   });
+  it('格式化对象树形结构数据,children为对象，返回正确的结构', () => {
+    const value = {
+      name: '张三',
+      children: {
+        name: '李四',
+        children: {
+          name: '王五',
+        },
+      },
+    };
+    const newValue = formatData(value, {
+      map: { name: 'username' },
+      deep: true,
+    });
+    expect(newValue).toEqual({
+      username: '张三',
+      children: {
+        username: '李四',
+        children: {
+          username: '王五',
+        },
+      },
+    });
+  });
+  it('格式化对象树形结构数据,children为对象,deepKeyMap有值，返回正确的结构', () => {
+    const value = {
+      name: '张三',
+      children: {
+        name: '李四',
+        children: {
+          name: '王五',
+        },
+      },
+    };
+    const newValue = formatData(value, {
+      map: { name: 'username' },
+      deep: true,
+      deepKey: 'children',
+      deepKeyMap: 'children1',
+    });
+    expect(newValue).toEqual({
+      username: '张三',
+      children1: {
+        username: '李四',
+        children1: {
+          username: '王五',
+        },
+      },
+    });
+  });
 });

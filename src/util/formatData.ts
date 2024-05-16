@@ -1,5 +1,6 @@
 import { isObject } from '../typed/isObject';
 import { isEmpty } from '../typed/isEmpty';
+import { isArray } from '../typed/isArray';
 
 type Map = { [key: string]: string };
 
@@ -29,6 +30,10 @@ interface FormatDataOptions {
    * 深度格式化key，默认为 'children'
    */
   deepKey?: string;
+  /**
+   * 深度格式化 key 映射值 默认为 'children'
+   */
+  deepKeyMap?: string;
 }
 
 /**
@@ -54,7 +59,7 @@ const getEffectiveMap = (data: Data, mapping: Map): Map => {
   if (!isEmpty(mapping) && isObject(mapping)) {
     return mapping;
   }
-  return getDefaultMap(Array.isArray(data) ? data[0] : data);
+  return getDefaultMap(isArray(data) ? data[0] : data);
 };
 
 /**
@@ -65,6 +70,7 @@ const getEffectiveMap = (data: Data, mapping: Map): Map => {
  * @param extra - 额外的数据
  * @param deep - 是否深度格式化
  * @param deepKey - 深度格式化 key 值 默认为 'children'
+ * @param deepKeyMap - 深度格式化 key 映射值 默认为 'children'
  * @returns 格式化后的对象
  */
 const formatSingleItem = (
@@ -74,17 +80,21 @@ const formatSingleItem = (
   extra: RecordItem,
   deep: boolean,
   deepKey: string,
+  deepKeyMap: string,
 ): RecordItem => {
   const formattedItem: RecordItem = isObject(extra) ? { ...extra } : {};
+
   Object.keys(item).forEach((key) => {
     const mappedKey = mapping[key] || key;
     if (keep && mappedKey !== key) {
       formattedItem[key] = item[key];
     }
-    if (deep && key === deepKey && Array.isArray(item[key])) {
-      formattedItem[key] = item[key].map((child: RecordItem) =>
-        formatSingleItem(child, mapping, keep, extra, deep, deepKey),
-      );
+    if (deep && key === deepKey) {
+      formattedItem[deepKeyMap] = isArray(item[key])
+        ? item[key].map((child: RecordItem) =>
+            formatSingleItem(child, mapping, keep, extra, deep, deepKey, deepKeyMap),
+          )
+        : formatSingleItem(item[key], mapping, keep, extra, deep, deepKey, deepKeyMap);
     } else {
       formattedItem[mappedKey] = item[key];
     }
@@ -105,13 +115,22 @@ export const formatData = <T extends Data>(data: T, options?: FormatDataOptions)
   }
 
   // 解构参数，设置默认值
-  const { map = {}, keep = false, extra = {}, deep = false, deepKey = 'children' } = options || {};
+  const {
+    map = {},
+    keep = false,
+    extra = {},
+    deep = false,
+    deepKey = 'children',
+    deepKeyMap = 'children',
+  } = options || {};
 
   // 获取有效的 mapping
   const effectiveMap = getEffectiveMap(data, map);
 
   // 处理数组或单个对象
-  return Array.isArray(data)
-    ? data.map((item) => formatSingleItem(item, effectiveMap, keep, extra, deep, deepKey))
-    : formatSingleItem(data, effectiveMap, keep, extra, deep, deepKey);
+  return isArray(data)
+    ? data.map((item) =>
+        formatSingleItem(item, effectiveMap, keep, extra, deep, deepKey, deepKeyMap),
+      )
+    : formatSingleItem(data, effectiveMap, keep, extra, deep, deepKey, deepKeyMap);
 };

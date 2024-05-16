@@ -23,6 +23,7 @@
 | `extra`   | 额外的数据    | `Record<string, any>`    | `{}`       | `1.3.0` | 否    |
 | `deep`    | 是否深度格式化  | `boolean`                | `false`    | `1.4.0` | 否    |
 | `deepKey` | 深度格式化key | `string`                 | `children` | `1.4.0` | 否    |
+| `deepKeyMap` | 深度格式化 key 映射值 | `string`                 | `children` | `1.5.0` | 否    |
 
 ```typescript
 import { formatData } from 'roodash';
