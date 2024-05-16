@@ -4,7 +4,7 @@ const pkg = require('../../package.json');
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Roodash',
-  description: '前端常用工具类集合',
+  description: '前端常用工具集合',
   head: [['link', { href: '/roodash/favicon.png', rel: 'icon', type: 'image/png' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
