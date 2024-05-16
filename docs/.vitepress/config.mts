@@ -43,6 +43,7 @@ export default defineConfig({
           { text: 'debounce', link: '/util/debounce' },
           { text: 'throttle', link: '/util/throttle' },
           { text: 'formatData', link: '/util/formatData' },
+          { text: 'getFileExtension', link: '/util/getFileExtension' },
         ],
       },
       {
