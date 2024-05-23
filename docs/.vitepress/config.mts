@@ -45,6 +45,7 @@ export default defineConfig({
           { text: 'formatData', link: '/util/formatData' },
           { text: 'getFileExtension', link: '/util/getFileExtension' },
           { text: 'generateUUID', link: '/util/generateUUID' },
+          { text: 'formatBytes', link: '/util/formatBytes' },
         ],
       },
       {
