@@ -46,6 +46,7 @@ export default defineConfig({
           { text: 'getFileExtension', link: '/util/getFileExtension' },
           { text: 'generateUUID', link: '/util/generateUUID' },
           { text: 'formatBytes', link: '/util/formatBytes' },
+          { text: 'arrToObj', link: '/util/arrToObj' },
         ],
       },
       {
