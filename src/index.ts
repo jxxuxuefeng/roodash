@@ -9,6 +9,7 @@ export { getFileExtension } from './util/getFileExtension';
 export { generateUUID } from './util/generateUUID';
 export { formatBytes } from './util/formatBytes';
 export { arrToObj } from './util/arrToObj';
+export { buildTree } from './util/buildTree';
 
 export { isValidJson } from './typed/isValidJson';
 export { isArray } from './typed/isArray';

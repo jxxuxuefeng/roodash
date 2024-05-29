@@ -47,6 +47,7 @@ export default defineConfig({
           { text: 'generateUUID', link: '/util/generateUUID' },
           { text: 'formatBytes', link: '/util/formatBytes' },
           { text: 'arrToObj', link: '/util/arrToObj' },
+          { text: 'buildTree', link: '/util/buildTree' },
         ],
       },
       {
