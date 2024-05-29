@@ -48,6 +48,7 @@ export default defineConfig({
           { text: 'formatBytes', link: '/util/formatBytes' },
           { text: 'arrToObj', link: '/util/arrToObj' },
           { text: 'buildTree', link: '/util/buildTree' },
+          { text: 'toLowerKeys', link: '/util/toLowerKeys' },
         ],
       },
       {
