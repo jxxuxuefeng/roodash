@@ -108,10 +108,10 @@ const formatSingleItem = (
  * @param options - 可选项，包含映射关系
  * @returns 格式化后的数据
  */
-export const formatData = <T extends Data>(data: T, options?: FormatDataOptions): Data => {
+export const formatData = <T extends Data, R = T>(data: T, options?: FormatDataOptions): R => {
   // 如果 data 不是对象或数组，或 data 为空，直接返回
   if (typeof data !== 'object' || data === null || isEmpty(data)) {
-    return data;
+    return data as unknown as R;
   }
 
   // 解构参数，设置默认值
@@ -128,9 +128,11 @@ export const formatData = <T extends Data>(data: T, options?: FormatDataOptions)
   const effectiveMap = getEffectiveMap(data, map);
 
   // 处理数组或单个对象
-  return isArray(data)
-    ? data.map((item) =>
-        formatSingleItem(item, effectiveMap, keep, extra, deep, deepKey, deepKeyMap),
-      )
-    : formatSingleItem(data, effectiveMap, keep, extra, deep, deepKey, deepKeyMap);
+  return (
+    isArray(data)
+      ? data.map((item) =>
+          formatSingleItem(item, effectiveMap, keep, extra, deep, deepKey, deepKeyMap),
+        )
+      : formatSingleItem(data, effectiveMap, keep, extra, deep, deepKey, deepKeyMap)
+  ) as R;
 };
