@@ -1,9 +1,9 @@
 import { isArray } from '../typed/isArray';
 import { isEmpty } from '../typed/isEmpty';
 
-type Item = Record<string, any>;
+type RecordItem = Record<string, any>;
 
-type Data = Array<Item>;
+type Data = Array<RecordItem>;
 
 interface ArrToObjOptions {
   /**
@@ -30,29 +30,36 @@ interface ArrToObjOptions {
  * @param options - 配置项
  * @returns 转换后的对象
  */
-export const arrToObj = <T extends Data>(
+export const arrToObj = <T extends Data, K extends string | number | symbol = string>(
   data: T,
   options?: ArrToObjOptions,
-): Record<string, any> => {
+): Record<K, T[number]> => {
   // 如果 data 为空或者不是数组，则返回空对象
   if (isEmpty(data) || !isArray(data)) {
-    return {};
+    return {} as Record<K, T[number]>;
   }
 
   // 解构参数，设置默认值
   const { mapKey = 'id', deep = false, deepKey = 'children', keepDeepKey = true } = options || {};
 
   // reduce 方法将数组转换为对象
-  const result = data.reduce((previousValue, currentValue) => {
-    // 获取当前项的 key
-    const key = currentValue[mapKey];
-    // 如果 deep 为 true 并且当前项的 deepKey 是数组，则递归调用 arrToObj 方法
-    if (deep && isArray(currentValue[deepKey])) {
-      return { ...previousValue, [key]: currentValue, ...arrToObj(currentValue[deepKey], options) };
-    }
-    // 返回转换后的对象
-    return { ...previousValue, [key]: currentValue };
-  }, {});
+  const result = data.reduce(
+    (previousValue, currentValue) => {
+      // 获取当前项的 key
+      const key = currentValue[mapKey];
+      // 如果 deep 为 true 并且当前项的 deepKey 是数组，则递归调用 arrToObj 方法
+      if (deep && isArray(currentValue[deepKey])) {
+        return {
+          ...previousValue,
+          [key]: currentValue,
+          ...arrToObj(currentValue[deepKey], options),
+        };
+      }
+      // 返回转换后的对象
+      return { ...previousValue, [key]: currentValue };
+    },
+    {} as Record<K, T[number]>,
+  );
 
   // 如果 deep 为 true 并且 keepDeepKey 为 false，则删除 deepKey
   if (deep && !keepDeepKey) {
@@ -61,5 +68,5 @@ export const arrToObj = <T extends Data>(
     });
   }
 
-  return result;
+  return result as Record<K, T[number]>;
 };

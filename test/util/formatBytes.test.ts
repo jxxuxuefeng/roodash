@@ -42,7 +42,7 @@ describe('formatBytes', () => {
     expect(formatBytes(1.2089258196146292e24)).toBe('1.00YB');
   });
 
-  test('should not exceed defined units', () => {
+  test('不应超过定义的单位', () => {
     expect(formatBytes(1.2089258196146292e27)).toBe('1000.00YB');
   });
 });

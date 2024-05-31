@@ -79,8 +79,7 @@ export const buildTree = <
 
   // 遍历 data，构建树形结构
   data.forEach((item) => {
-    const node = nodeMap.get(item[key]);
-    if (!node) return;
+    const node = nodeMap.get(item[key]) as NodeTree<T, K, L>;
     if (!item[parentKey]) {
       roots.push(node);
     } else {

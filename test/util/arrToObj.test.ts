@@ -1,12 +1,12 @@
 import { arrToObj } from '../../src';
-
+type ArrType = { id: number; name: string };
 describe('arrToObj function', () => {
   it('传入数组，返回对象', () => {
     const arr = [
       { id: 1, name: '张三' },
       { id: 2, name: '李四' },
     ];
-    const obj = arrToObj(arr);
+    const obj = arrToObj<ArrType[]>(arr);
     expect(obj).toEqual({ 1: { id: 1, name: '张三' }, 2: { id: 2, name: '李四' } });
   });
 

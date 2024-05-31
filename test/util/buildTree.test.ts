@@ -179,4 +179,33 @@ describe('buildTree function', () => {
       },
     ]);
   });
+
+  it('应该正确处理额外数据', () => {
+    const data = [
+      { id: 1, pId: null, name: '张三' },
+      { id: 2, pId: 1, name: '李四' },
+    ];
+
+    const extraData = 111 as any;
+
+    const expectedTree = [
+      {
+        id: 1,
+        pId: null,
+        name: '张三',
+        level: 1,
+        children: [
+          {
+            id: 2,
+            pId: 1,
+            name: '李四',
+            level: 2,
+            children: [],
+          },
+        ],
+      },
+    ];
+
+    expect(buildTree(data, { extra: extraData })).toEqual(expectedTree);
+  });
 });
