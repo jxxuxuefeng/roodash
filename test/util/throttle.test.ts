@@ -39,7 +39,7 @@ describe('throttle function', () => {
     expect(func).toHaveBeenCalledTimes(2);
   });
 
-  it('应使用提供的最新参数', () => {
+  it('应使用提供的1参数', () => {
     const func = jest.fn();
     const throttledFunc = throttle(func, 300);
 
@@ -48,7 +48,7 @@ describe('throttle function', () => {
     throttledFunc(3);
 
     jest.advanceTimersByTime(300);
-    expect(func).toHaveBeenCalledWith(3);
+    expect(func).toHaveBeenCalledWith(1);
   });
 
   it('应保持上下文（`this`）', () => {

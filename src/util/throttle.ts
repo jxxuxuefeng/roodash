@@ -12,15 +12,14 @@ export const throttle = <T extends (...args: any[]) => any>(
   func: T,
   wait: number = 300,
 ): ThrottleFunc<T> => {
-  let timeout: ReturnType<typeof setTimeout> | null;
+  let timeout: ReturnType<typeof setTimeout> | null = null;
 
   return function (this: ThisParameterType<T>, ...args: Parameters<T>): void {
-    if (timeout !== null) {
-      clearTimeout(timeout);
+    if (timeout === null) {
+      timeout = setTimeout(() => {
+        timeout = null;
+        func.apply(this, args);
+      }, wait);
     }
-    timeout = setTimeout(() => {
-      timeout = null;
-      func.apply(this, args);
-    }, wait);
   };
 };
