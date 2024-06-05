@@ -208,4 +208,92 @@ describe('buildTree function', () => {
 
     expect(buildTree(data, { extra: extraData })).toEqual(expectedTree);
   });
+  it('正确处理层级关系', () => {
+    const data = [
+      {
+        Id: 'ab3a5f1c-3da2-4ecd-9140-e63583a7aede',
+        ClassifyName: '测试分类',
+        ParentId: null,
+        CompanyId: '0702',
+      },
+      {
+        Id: '228debab-8f40-40bd-9eb6-8cdae237469f',
+        ClassifyName: '测试分类-1-1-11',
+        ParentId: 'a086b0d4-efdc-49ed-bacb-09f875d7a586',
+        CompanyId: '0702',
+      },
+
+      {
+        Id: 'fbe4ca8d-2a82-4eb0-9f4c-6ba76488f3f8',
+        ClassifyName: '测试分类-1',
+        ParentId: 'ab3a5f1c-3da2-4ecd-9140-e63583a7aede',
+        CompanyId: '0702',
+      },
+      {
+        Id: 'a086b0d4-efdc-49ed-bacb-09f875d7a586',
+        ClassifyName: '测试分类-1-1',
+        ParentId: 'fbe4ca8d-2a82-4eb0-9f4c-6ba76488f3f8',
+        CompanyId: '0702',
+      },
+
+      {
+        Id: '70ebe1d7-2388-4a2a-93a2-e0694f4312d6',
+        ClassifyName: '测试分类-1-1-111',
+        ParentId: '228debab-8f40-40bd-9eb6-8cdae237469f',
+        CompanyId: '0702',
+      },
+    ];
+    const result = buildTree(data, {
+      key: 'Id',
+      parentKey: 'ParentId',
+      levelKey: 'ClassifyLevel',
+    });
+
+    expect(result).toEqual([
+      {
+        ClassifyLevel: 1,
+        ClassifyName: '测试分类',
+        CompanyId: '0702',
+        Id: 'ab3a5f1c-3da2-4ecd-9140-e63583a7aede',
+        ParentId: null,
+        children: [
+          {
+            ClassifyLevel: 2,
+            ClassifyName: '测试分类-1',
+            CompanyId: '0702',
+            Id: 'fbe4ca8d-2a82-4eb0-9f4c-6ba76488f3f8',
+            ParentId: 'ab3a5f1c-3da2-4ecd-9140-e63583a7aede',
+            children: [
+              {
+                ClassifyLevel: 3,
+                ClassifyName: '测试分类-1-1',
+                CompanyId: '0702',
+                Id: 'a086b0d4-efdc-49ed-bacb-09f875d7a586',
+                ParentId: 'fbe4ca8d-2a82-4eb0-9f4c-6ba76488f3f8',
+                children: [
+                  {
+                    ClassifyLevel: 4,
+                    ClassifyName: '测试分类-1-1-11',
+                    CompanyId: '0702',
+                    Id: '228debab-8f40-40bd-9eb6-8cdae237469f',
+                    ParentId: 'a086b0d4-efdc-49ed-bacb-09f875d7a586',
+                    children: [
+                      {
+                        ClassifyLevel: 5,
+                        ClassifyName: '测试分类-1-1-111',
+                        CompanyId: '0702',
+                        Id: '70ebe1d7-2388-4a2a-93a2-e0694f4312d6',
+                        ParentId: '228debab-8f40-40bd-9eb6-8cdae237469f',
+                        children: [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ]);
+  });
 });

@@ -71,7 +71,6 @@ export const buildTree = <
     const node: NodeTree<T, K, L> = {
       ...item,
       ..._extra,
-      [levelKey]: 1 as number,
       [childrenKey]: [],
     };
     nodeMap.set(node[key], node);
@@ -85,11 +84,23 @@ export const buildTree = <
     } else {
       const parentNode = nodeMap.get(item[parentKey]);
       if (parentNode) {
-        node[levelKey] = (parentNode as any)[levelKey] + 1;
         parentNode[childrenKey].push(node);
       }
     }
   });
+
+  // 递归函数设置level
+  const setLevel = (nodes: NodeTree<T, K, L>[], level: number) => {
+    nodes.forEach((node) => {
+      node[levelKey] = level as NodeTree<T, K, L>[L]; // Type assertion to make TypeScript happy
+      if (node[childrenKey] && node[childrenKey].length > 0) {
+        setLevel(node[childrenKey], level + 1);
+      }
+    });
+  };
+
+  // 初始化根节点的level
+  setLevel(roots, 1);
 
   return roots;
 };
