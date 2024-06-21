@@ -23,6 +23,9 @@ export const local = {
    */
   set(key: string, value: string | number | boolean | null | Record<string, unknown>): void | null {
     if (!key || value === undefined) return null;
+    if (typeof value === 'string') {
+      return localStorage.setItem(key, value);
+    }
     return localStorage.setItem(key, JSON.stringify(value));
   },
 

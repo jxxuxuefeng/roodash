@@ -33,6 +33,14 @@ describe('local', () => {
     expect(result).toBeNull();
   });
 
+  test('set 的value是字符串时，不需要格式化', () => {
+    const key = 'testKey';
+    const value = 'John';
+    local.set(key, value);
+    const result = localStorage.getItem(key);
+    expect(result).toBe(value);
+  });
+
   test('返回值保存在localStorage中', () => {
     const key = 'testKey';
     const value = { name: 'John', age: 30 };
