@@ -14,7 +14,7 @@ outline: deep
 
 `2024-06-21`
 
-- 🐞 修复 [`local`] set 方法的在 value 是字符串时，存储的值为value重复格式化的bug
+- 🐞 修复 [`local`] set 方法的在 value 是字符串时，重复格式化的bug
 
 ## 1.10.4
 
