@@ -9,7 +9,7 @@ export const session = {
    * @param key
    * @returns {any}
    */
-  get(key: string): unknown {
+  get<T>(key: string): T | null {
     if (!key) return null;
     const res = sessionStorage.getItem(key);
     return res && isValidJson(res) ? JSON.parse(res) : res;
